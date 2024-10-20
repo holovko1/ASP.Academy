@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"; // Import useEffect here
+import APP_ENV from "../../env";
 import axios from "axios";
 
 const ShowProducts = () => {
@@ -28,19 +29,19 @@ const ShowProducts = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Navbar</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Navbar</a>
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="category">Категорії</a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="category">Категорії</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="product">Продукти</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product">Продукти</a>
                             </li>
                         </ul>
                     </div>
@@ -48,13 +49,15 @@ const ShowProducts = () => {
             </nav>
             <div className="container">
                 <h1 className="text-center">Список продуктів</h1>
-                <Link to={"/create"} className={"btn btn-success"}>Додати</Link>
+                <Link to={"/createP"} className={"btn btn-success"}>Додати</Link>
                 <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Назва</th>
+                            <th scope="col">Фото</th>
                             <th scope="col">Ціна</th>
+                            <th scope="col">CategoryID</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +65,11 @@ const ShowProducts = () => {
                             <tr key={item.id}>
                                 <th scope="row">{item.id}</th>
                                 <td>{item.name}</td>
+                                <td>
+                                    <img src={`${APP_ENV.URL}images/150_${item.images[0]}`} alt={item.name} width="75px"/>
+                                </td>
                                 <td>{item.price}</td>
+                                <td>{item.categoryName}</td>
                             </tr>
                         ))}
                     </tbody>

@@ -30,9 +30,27 @@ const HomePage = () => {
     }
     return (
         <>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Navbar</a>
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="category">Категорії</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="product">Продукти</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <div className="container">
                 <h1 className="text-center">Список категорій</h1>
-                <Link to={"/create"} className={"btn btn-success"}>Додати</Link>
+                <Link to={"/createC"} className={"btn btn-success"}>Додати</Link>
                 {/*<button className={"btn btn-success"} onClick={handleAddButton}>Додати новий</button>*/}
                 <table className="table">
                     <thead>
